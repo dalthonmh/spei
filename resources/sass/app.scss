@@ -6,9 +6,36 @@
 @import 'variables';
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+/*@import '~bootstrap/scss/bootstrap';*/
 
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.navbar-link-modificado{
+	padding-right: 15px;
+	font-family: 'Nunito', sans-serif;
+}
+.navbar-link-modificado::after {
+    border: 2px solid #fff;
+    border-right: 0;
+    border-top: 0;
+    content: " ";
+    display: block;
+    height: 0.5em;
+    pointer-events: none;
+    position: absolute;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    width: 0.5em;
+    margin-top: -0.375em;
+    right: 1.125em;
+    top: 50%;
+}
+
+/*bootstrap*/
+.main-footer
+{
+	font-family: 'Nunito', sans-serif;
 }
