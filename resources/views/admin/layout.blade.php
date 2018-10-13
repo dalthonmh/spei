@@ -280,7 +280,7 @@ desired effect
 
       <!-- Sidebar Menu -->
 
-      {{-- @include('admin.partials.nav') --}}
+      @include('admin.partials.nav')
 
       <!-- /.sidebar-menu -->
     </section>

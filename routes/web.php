@@ -22,15 +22,18 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('admin', function(){
 	return view('admin.dashboard');
-});
+})->middleware('auth');
 
 Route::group([
 	'prefix' => 'admin',
-	'namespace' => 'Admin',
+	// 'namespace' => 'Admin',
 	'middleware' => 'auth'],
 
 	function (){
-		return view('admin.dashboard');
+		Route::get('/','AdminController@index')->name('dashboard');
+		Route::resource('users','UsersController',['as' => 'admin']);
+		Route::resource('prestamos','PrestamosController',['as' => 'admin']);
+		Route::resource('equipos','EquiposController',['as' => 'admin']);
 	}
 );
 
