@@ -27,7 +27,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect.
   -->
-  <link rel="stylesheet" href="/adminlte/css/skins/skin-blue.min.css">
+  {{-- <link rel="stylesheet" href="/adminlte/css/skins/skin-blue.min.css"> --}}
+  <link rel="stylesheet" href="/adminlte/css/skins/_all-skins.min.css">
 
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -66,7 +67,7 @@ desired effect
     <!-- Logo -->
     <a href="{{ route('home') }}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
+      <span class="logo-mini"><b>S</b>PEI</span>
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg">{{ config('app.name') }}</span>
     </a>
@@ -403,7 +404,7 @@ desired effect
 <script src="/adminlte/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="/adminlte/bootstrap/js/bootstrap.min.js"></script>
-
+<script src="/adminlte/plugins/sparkline/jquery.sparkline.min.js"></script>
 
 {{-- @unless (request()->is('/admin/posts/*'))
 

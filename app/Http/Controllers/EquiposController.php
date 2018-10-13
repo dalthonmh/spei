@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Equipo;
 
 class EquiposController extends Controller
 {
@@ -13,7 +14,8 @@ class EquiposController extends Controller
      */
     public function index()
     {
-        return view('admin.equipos.index');
+        $equipos = Equipo::all();
+        return view('admin.equipos.index',compact('equipos'));
     }
 
     /**
@@ -45,7 +47,7 @@ class EquiposController extends Controller
      */
     public function show($id)
     {
-        //
+        hola;
     }
 
     /**

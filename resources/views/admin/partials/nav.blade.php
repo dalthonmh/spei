@@ -54,4 +54,27 @@
     </ul>
   </li>
 
+  {{-- EQUIPOS --}}
+
+  <li class="treeview ">
+  {{-- <li class="treeview {{ setActiveRoute(['admin.users.index','admin.users.create']) }} "> --}}
+    <a href="#"><i class="fa fa-sitemap"></i> <span>Equipos</span>
+      <span class="pull-right-container">
+        <i class="fa fa-angle-left pull-right"></i>
+      </span>
+    </a>
+    <ul class="treeview-menu">
+      <li class="{{ request()->is('admin.equipos.index') ? 'active' : '' }}" >
+      {{-- <li class="{{ setActiveRoute('admin.equipos.index') }}" > --}}
+        <a href="{{ route('admin.equipos.index') }}"> 
+        <i class="fa fa-eye"></i> Ver todos los equipos
+      </a>
+    </li>
+      <li class="{{ request()->is('admin.equipos.create') ? 'active' : '' }}">
+      {{-- <li class="{{ setActiveRoute('admin.equipos.create') }}"> --}}
+          <a href="{{ route('admin.equipos.create') }}"><i class="fa fa-pencil"></i> Crear un equipo</a>
+      </li>
+    </ul>
+  </li>
+
 </ul>
