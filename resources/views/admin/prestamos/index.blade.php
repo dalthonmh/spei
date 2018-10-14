@@ -22,12 +22,66 @@
     <div class="modal-content" style="border-radius: 5px;">
       <div class="modal-header">
         <h5 class="modal-title fontfamilynunito" style="display: inline; font-weight: 1000;" id="exampleModalLabel">Nuevo Préstamo</h5>
-        <button type="button" id="btn-no-color" style="display: inline;color: red;" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" id="btn-no-color" style="display: inline;color: red;outline:none;" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true"><i class="fa fa-circle"></i></span>
         </button>
       </div>
       <div class="modal-body">
-        ...
+        
+		<div class="form-group">
+      		<label>Equipos</label>
+      		<select name="tags[]" class="form-control select2" 
+      			multiple="multiple" 
+      			data-placeholder="Selecciona una o mas etiquetas" 
+      			style="width: 100%;">
+                <option value="">Seleccione un equipo</option>
+                <option value="1">proyector 1</option>
+                <option value="2">proyector 2</option>
+                <option value="3">laptop asus</option>
+                <option value="3">extensión</option>
+            </select>
+            {!! $errors->first('tags','<span class="help-block">:message</span>') !!}
+      	</div>
+
+		<div class="form-group">
+      		<label>Usuario</label>
+      		<select name="category_id" class="form-control">
+      				<option value="">Seleccione un usuario</option>
+      				<option value="1">Ing. Edgar Taya</option>
+      				<option value="2">Ing. Gianfranco Malaga</option>
+      				<option value="3">Ing. Evert Osco</option>
+      				<option value="4">Ing. Luis Mori</option>
+      				<option value="5">Ing. Manuel Barraza</option>
+      		</select>
+      		{!! $errors->first('category_id','<span class="help-block">:message</span>') !!}
+      	</div>	
+
+		<div class="form-group">
+      		<label>Curso</label>
+      		<select name="category_id" class="form-control">
+      				<option value="">Seleccione un curso</option>
+      				<option value="1">Base de Datos</option>
+      				<option value="1">Matemática II</option>
+      				<option value="1">Telemática</option>
+      				<option value="1">Métodos Cuantitativos</option>
+      				<option value="1">Gestión de la Ecoeficiencia</option>
+      		</select>
+      		{!! $errors->first('category_id','<span class="help-block">:message</span>') !!}
+      	</div>
+
+      	<div class="form-group">
+      		<label>Hora Fin</label>
+      		<div class="well">
+			  <div id="datetimepicker1" class="input-append date">
+			    <input data-format="hh:mm:ss" type="text"></input>
+			    <span class="add-on" style="display: inline;">
+			      <i data-time-icon="icon-time" data-date-icon="icon-calendar" class="fa fa-calendar" style="display: inline;">
+			      </i>
+			    </span>
+			  </div>
+			</div>
+      	</div>	
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -87,4 +141,36 @@
 	<!-- /.box-footer -->
 </div>
 
-@endsection
+@stop
+
+@push('styles')
+
+	<link rel="stylesheet" href="/adminlte/plugins/select2/select2.min.css">
+  	<link rel="stylesheet" href="/adminlte/plugins/datatables/dataTables.bootstrap.css">
+  	<link rel="stylesheet" href="/bootstrap-datetimepicker-0.0.11/css/bootstrap-datetimepicker.min.css">
+  	{{-- <link rel="stylesheet" href="/bootstrap-datetimepicker-0.0.11/css/bootstrap-combined.min.css"> --}}
+
+@endpush
+
+@push('scripts')
+	<script src="https://cdn.ckeditor.com/4.10.0/standard/ckeditor.js"></script>
+	<script src="/adminlte/plugins/select2/select2.full.min.js"></script>
+	<script src="/bootstrap-datetimepicker-0.0.11/js/bootstrap-datetimepicker.min.js"></script>
+	{{-- <script src="/bootstrap-datetimepicker-0.0.11/js/bootstrap.min.js"></script> --}}
+	<script>
+		$(".select2").select2({
+			tags:true,
+		});
+
+	//datetime picker
+	$(function() {
+    $('#datetimepicker1').datetimepicker({
+      language: 'en',
+      pickDate: false,
+      pick12HourFormat: true,
+       maskInput: false,
+    });
+  });
+
+</script>
+@endpush
