@@ -9,11 +9,6 @@
 		<div class="box-tools pull-right">
 			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"></i> Nuevo Préstamo</button>
 		</div>
-<style>
-#btn-no-color{
-	color: red;
-}
-</style>
 
 </script>
 <!-- Modal -->
@@ -21,8 +16,8 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content" style="border-radius: 5px;">
       <div class="modal-header">
-        <h5 class="modal-title fontfamilynunito" style="display: inline; font-weight: 1000;" id="exampleModalLabel">Nuevo Préstamo</h5>
-        <button type="button" id="btn-no-color" style="display: inline;color: red;outline:none;" class="close" data-dismiss="modal" aria-label="Close">
+        <h4 class="modal-title fontfamilynunito" style="display: inline; font-weight: 1000;" id="exampleModalLabel">NUEVO PRÉSTAMO</h4>
+        <button type="button" id="" style="display: inline;color: red;outline:none;" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true"><i class="fa fa-circle"></i></span>
         </button>
       </div>
@@ -44,8 +39,8 @@
       	</div>
 
 		<div class="form-group">
-      		<label>Usuario</label>
-      		<select name="category_id" class="form-control">
+      		<label>Usuario</label><br>
+      		<select name="user_id" class="form-control select2" style="width: 100%;">
       				<option value="">Seleccione un usuario</option>
       				<option value="1">Ing. Edgar Taya</option>
       				<option value="2">Ing. Gianfranco Malaga</option>
@@ -53,12 +48,11 @@
       				<option value="4">Ing. Luis Mori</option>
       				<option value="5">Ing. Manuel Barraza</option>
       		</select>
-      		{!! $errors->first('category_id','<span class="help-block">:message</span>') !!}
       	</div>	
 
 		<div class="form-group">
       		<label>Curso</label>
-      		<select name="category_id" class="form-control">
+      		<select name="curso_id" class="form-control select2" style="width: 100%;">
       				<option value="">Seleccione un curso</option>
       				<option value="1">Base de Datos</option>
       				<option value="1">Matemática II</option>
@@ -68,12 +62,25 @@
       		</select>
       		{!! $errors->first('category_id','<span class="help-block">:message</span>') !!}
       	</div>
+		
+		<div class="form-group">
+      		<label>Ubicación</label>
+      		<select name="ubicacion_id" class="form-control select2" style="width: 100%;">
+      				<option value="">Seleccione una ubicación</option>
+      				<option value="1">Mecánica 3er piso</option>
+      				<option value="1">Minas 2 piso</option>
+      				<option value="1">Laboratorio C</option>
+      				<option value="1">Laboratorio A</option>
+      				<option value="1">Administración 2 piso</option>
+      		</select>
+      		{!! $errors->first('category_id','<span class="help-block">:message</span>') !!}
+      	</div>
 
       	<div class="form-group">
       		<label>Hora Fin</label>
       		<div class="well">
 			  <div id="datetimepicker1" class="input-append date">
-			    <input data-format="hh:mm:ss" type="text"></input>
+			    <input data-format="hh:mm" type="text"></input>
 			    <span class="add-on" style="display: inline;">
 			      <i data-time-icon="icon-time" data-date-icon="icon-calendar" class="fa fa-calendar" style="display: inline;">
 			      </i>
@@ -102,6 +109,7 @@
 						<th>Equipos</th>
 						<th>Usuario</th>
 						<th>Curso</th>
+						<th>Ubicación</th>
 						<th>Progreso</th>
 						<th>Hora inicio</th>
 						<th>Hora fin</th>
@@ -110,18 +118,19 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td><a href="#">OR9842</a></td>
+						<td><a href="#">01</a></td>
 						<td>Proyector 1</td>
 						<td>Ing. Edgar Taya</td>
 						<td>Base de Datos</td>
+						<td>Mecánica 3er piso</td>
 						<td>---------</td>
 						<td>04:15 PM</td>
 						<td>05:50 PM</td>
 						<td>
-							<a href="{{ route('admin.prestamos.edit',1) }}" class="btn btn-xs btn-info">
+							<a href="{{ route('prestamos.edit',1) }}" class="btn btn-xs btn-info">
 								<i class="fa fa-pencil"></i>
 							</a>
-							<form method="POST" action="{{ route('admin.prestamos.destroy',1) }}" style="display: inline;">
+							<form method="POST" action="{{ route('prestamos.destroy',1) }}" style="display: inline;">
 								{{ csrf_field() }}  {{ method_field('DELETE') }}
 								<button class="btn btn-xs btn-danger"
 									onclick="return confirm('¿Estas seguro que deseas eliminar el préstamo?')">
@@ -129,7 +138,7 @@
 								</button>
 							</form>
 						</td>
-					</tr
+					</tr>
 				</tbody>
 			</table>
 		</div>
@@ -145,7 +154,8 @@
 
 @push('styles')
 
-	<link rel="stylesheet" href="/adminlte/plugins/select2/select2.min.css">
+	{{-- <link rel="stylesheet" href="/adminlte/plugins/select2/select2.min.css"> --}}
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
   	<link rel="stylesheet" href="/adminlte/plugins/datatables/dataTables.bootstrap.css">
   	<link rel="stylesheet" href="/bootstrap-datetimepicker-0.0.11/css/bootstrap-datetimepicker.min.css">
   	{{-- <link rel="stylesheet" href="/bootstrap-datetimepicker-0.0.11/css/bootstrap-combined.min.css"> --}}
@@ -154,13 +164,14 @@
 
 @push('scripts')
 	<script src="https://cdn.ckeditor.com/4.10.0/standard/ckeditor.js"></script>
-	<script src="/adminlte/plugins/select2/select2.full.min.js"></script>
+	{{-- <script src="/adminlte/plugins/select2/select2.full.min.js"></script> --}}
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 	<script src="/bootstrap-datetimepicker-0.0.11/js/bootstrap-datetimepicker.min.js"></script>
 	{{-- <script src="/bootstrap-datetimepicker-0.0.11/js/bootstrap.min.js"></script> --}}
 	<script>
-		$(".select2").select2({
-			tags:true,
-		});
+	$.fn.modal.Constructor.prototype.enforceFocus = function() {};
+	
+	$(".select2").select2();
 
 	//datetime picker
 	$(function() {
@@ -169,8 +180,8 @@
       pickDate: false,
       pick12HourFormat: true,
        maskInput: false,
+       pickSeconds: false,
     });
   });
-
 </script>
 @endpush

@@ -35,23 +35,14 @@
 }
 
 /*bootstrap*/
-.fontfamilynunito{
+.fontfamilynunito , .main-footer, .main-sidebar, .content-wrapper, .main-header, .sidebar-menu{
     font-family: 'Nunito', sans-serif;
 }
 .main-footer
 {
-	font-family: 'Nunito', sans-serif;
+    font-size: 12px;
 }
-.main-sidebar{
-    font-family: 'Nunito', sans-serif;
-}
-.content-wrapper{
-    font-family: 'Nunito', sans-serif;
-}
-.main-header{
-    font-family: 'Nunito', sans-serif;
-}
-.sidebar-menu
-{
-    font-family: 'Nunito', sans-serif;
+
+.select2{
+    width: 100%;
 }

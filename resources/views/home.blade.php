@@ -1,4 +1,4 @@
-@extends('admin.dashboard')
+@extends('admin.layout')
 
 @section('content')
 <div class="container">
@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    
                 </div>
             </div>
         </div>

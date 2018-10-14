@@ -27,13 +27,13 @@
 				<td>{{ $equipo->nombre }}</td>
 				<td>{{ $equipo->estado }}</td>
 				<td>
-					<a href="{{ route('admin.equipos.show',$equipo) }}" target="_blank" class="btn btn-xs btn-info">
+					<a href="{{ route('equipos.show',$equipo) }}" target="_blank" class="btn btn-xs btn-info">
 						<i class="fa fa-eye"></i>
 					</a>
-					<a href="{{ route('admin.equipos.edit',$equipo) }}" class="btn btn-xs btn-info">
+					<a href="{{ route('equipos.edit',$equipo) }}" class="btn btn-xs btn-info">
 						<i class="fa fa-pencil"></i>
 					</a>
-					<form method="equipo" action="{{ route('admin.equipos.destroy',$equipo) }}" style="display: inline;">
+					<form method="equipo" action="{{ route('equipos.destroy',$equipo) }}" style="display: inline;">
 						{{ csrf_field() }}  {{ method_field('DELETE') }}
 						<button class="btn btn-xs btn-danger"
 							onclick="return confirm('¿Estas seguro que deseas eliminar el equipo?')">
