@@ -16,9 +16,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
-   
-@stack('styles')
+  <script src="{{ asset('js/app.js') }}" defer></script>
+  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <script src="/js/app.js"></script>
+
+  @stack('styles')
 
   <link rel="stylesheet" href="/adminlte/css/AdminLTE.min.css">
   <link rel="stylesheet" href="/adminlte/css/skins/_all-skins.min.css">
@@ -26,63 +28,61 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
-<div class="wrapper">
+  <div class="wrapper">
+    <!-- Main Header -->
+    <header class="main-header">
 
-  <!-- Main Header -->
-  <header class="main-header">
-
-    <!-- Logo -->
-    <a href="{{ route('home') }}" class="logo">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>S</b>PEI</span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg">{{ config('app.name') }}</span>
-    </a>
-
-    <!-- Header Navbar -->
-    <nav class="navbar navbar-static-top" role="navigation">
-      <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-        <span class="sr-only">Toggle navigation</span>
+      <!-- Logo -->
+      <a href="{{ route('home') }}" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>S</b>PEI</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg">{{ config('app.name') }}</span>
       </a>
-      <!-- Navbar Right Menu -->
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-          <!-- Messages: style can be found in dropdown.less-->
 
-          <!-- User Account Menu -->
-          <li class="dropdown user user-menu">
-            <!-- Menu Toggle Button -->
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <!-- The user image in the navbar-->
-              <img src="/adminlte/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs navbar-link-modificado">{{ auth()->user()->name }}</span>
-            </a>
-            <ul class="dropdown-menu">
+      <!-- Header Navbar -->
+      <nav class="navbar navbar-static-top" role="navigation">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+          <span class="sr-only">Toggle navigation</span>
+        </a>
+        <!-- Navbar Right Menu -->
+        <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav">
+            <!-- Messages: style can be found in dropdown.less-->
 
-              <!-- Menu Footer-->
-              <li class="dropdown-item">
-                <i class="fa fa-fw fa-user-circle-o m-r-5"></i>
+            <!-- User Account Menu -->
+            <li class="dropdown user user-menu">
+              <!-- Menu Toggle Button -->
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <!-- The user image in the navbar-->
+                <img src="/adminlte/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                <span class="hidden-xs navbar-link-modificado">{{ auth()->user()->name }}</span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <!-- Menu Footer-->
+                <li class="dropdown-item">
+                  <i class="fa fa-fw fa-user-circle-o m-r-5"></i>
                   <a href="#" class="">Profile</a>
 
-              </li>
-              
-                <li class="dropdown-item">
-                      <a class="" href="{{ route('logout') }}"
-                         onclick="event.preventDefault();
-                                       document.getElementById('logout-form').submit();">
-                          {{ __('Logout') }}
-                      </a>
+                </li>
 
-                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                          @csrf
-                      </form>
-                  </li>
+                <li class="dropdown-item">
+                  <a class="" href="{{ route('logout') }}"
+                  onclick="event.preventDefault();
+                  document.getElementById('logout-form').submit();">
+                  {{ __('Logout') }}
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+                </form>
+              </li>
               
             </ul>
           </li>
-
         </ul>
       </div>
     </nav>
@@ -113,7 +113,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <section class="content">
 
       @if(session()->has('flash'))
-        <div class="alert alert-success">{{ session('flash') }}</div>
+      <div class="alert alert-success">{{ session('flash') }}</div>
       @endif
 
       @yield('content')
@@ -129,7 +129,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Default to the left -->
     <strong>Copyright &copy; <span id="fecha"></span> <span class="text-primary">Sistema de Préstamos de Equipos Informáticos.</span></strong>
   </footer>
-
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
@@ -142,17 +141,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="/adminlte/bootstrap/js/bootstrap.min.js"></script>
 <script src="/adminlte/plugins/sparkline/jquery.sparkline.min.js"></script>
 
-
 @stack('scripts')
 <!-- AdminLTE App -->
 <script src="/adminlte/js/app.min.js"></script>
 <script>
   var anio = (new Date).getFullYear();
   $(document).ready(function() {
-  $("#fecha").text( anio );
-});
+    $("#fecha").text( anio );
+  });
 </script>
-
 
 </body>
 </html>

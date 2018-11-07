@@ -78,7 +78,11 @@
                 <div class="title m-b-md">
                     Sistema de Préstamos de Equipos Informáticos
                 </div>
-                <example-component></example-component>
+                <div id="replace">
+                    <example-component></example-component>
+                    <prestamos-component></prestamos-component>
+                    <example-component></example-component>
+                </div>
             </div>
         </div>
     </body>
