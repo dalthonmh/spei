@@ -27,6 +27,11 @@ class EquiposTableSeeder extends Seeder
             'email' => 'admin@admin.com',
             'password' => bcrypt('123456')
         ]);
+        User::create([
+            'name' => 'administrador',
+            'email' => 'administrador@gmail.com',
+            'password' => bcrypt('123456')
+        ]);
 
         $equipos = new Equipo;
         $equipos->nombre = "proyector 01";
